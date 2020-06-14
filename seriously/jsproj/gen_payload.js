@@ -5,6 +5,7 @@
 var serialize = require('node-serialize');
 var urlencode = require('urlencode');
 
+// eyJpdGVtcyI6eyIwIjp7Im5hbWUiOiJIYXdvcnRoaW9wc2lzIGF0dGVudWF0YSIsInByaWNlIjoxOS45OSwiY291bnQiOjF9LCIyIjp7Im5hbWUiOiJEcmFjYWVuYSB0cmlmYXNjaWF0YSIsInByaWNlIjoxNC45OSwiY291bnQiOjF9fX0K
 // innocent={"items":{"0":{"name":"Haworthiopsis attenuata","price":19.99,"count":1},"2":{"name":"Dracaena trifasciata","price":14.99,"count":1}}}
 // var obj = serialize.unserialize(innocent);
 
