@@ -136,9 +136,9 @@ fs.readFile('/home/user/flag.txt', function(err, data) {
 });
 ```
 
-And something happens:
+And then:
 
-![Request Catcher - Round 1](https://github.com/Neptunians/nahamcon-ctf/blob/master/seriously/request_catcher_screenshot_1.png)
+![Request Catcher - Round 1](https://github.com/Neptunians/nahamcon-ctf/blob/master/seriously/request_catcher_screenshot_2.png)
 
 Decodes to:
 
